@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Edit Show</title>
+</head>
+<body>
+    <div class="container">
+        <div><a href="/shows" class="float-right">Go Back</a></div>
+        <h1>Edit Show {{show_info.id}}</h1>
+        <form action="/shows/{{show_info.id}}/update" method="post">
+            {% csrf_token %}
+            <label>Title</label>
+            <input type="text" name="title" class="form-control mb-3">
+            <label>Network</label>
+            <input type="text" name="network" class="form-control mb-3">
+            <label>Release Date</label>
+            <input type="datetime" name="release_date" class="form-control mb-3">
+            <label>Description</label>
+            <textarea name="desc" class="form-control mb-3"></textarea>
+            <input type="submit" value="Update"  class="btn btn-secondary mb-3">
+        </form>
+        <div><a href="/shows/{{show_info.id}}">Go to Show</a></div>
+    </div>
+</body>
+</html>
