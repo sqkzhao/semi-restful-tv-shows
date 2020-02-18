@@ -10,17 +10,24 @@
     <div class="container">
         <div><a href="/shows" class="float-right">Go Back</a></div>
         <h1>Edit Show {{show_info.id}}</h1>
+        <ul>
+        {% if messages %}
+            {% for message in messages %}
+                <li>{{message}}</li>
+            {% endfor %}
+        {% endif %}
+        </ul>
         <form action="/shows/{{show_info.id}}/update" method="post">
             {% csrf_token %}
             <label>Title</label>
-            <input type="text" name="title" class="form-control mb-3">
+            <input type="text" name="title" value={{show_info.title}} class="form-control mb-3">
             <label>Network</label>
-            <input type="text" name="network" class="form-control mb-3">
+            <input type="text" name="network" value={{show_info.network}} class="form-control mb-3">
             <label>Release Date</label>
-            <input type="datetime" name="release_date" class="form-control mb-3">
+            <input type="date" name="release_date" value={{show_info.release_date}} class="form-control mb-3">
             <label>Description</label>
-            <textarea name="desc" class="form-control mb-3"></textarea>
-            <input type="submit" value="Update"  class="btn btn-secondary mb-3">
+            <input type="text" name="desc" value={{show_info.desc}} class="form-control mb-3">
+            <input type="submit" value="Update" class="btn btn-secondary mb-3">
         </form>
         <div><a href="/shows/{{show_info.id}}">Go to Show</a></div>
     </div>

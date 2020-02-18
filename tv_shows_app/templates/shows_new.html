@@ -13,6 +13,13 @@
         </div>
         <div>
             <h1>Add a New Show</h1>
+            <ul>
+            {% if messages %}
+                {% for message in messages %}
+                    <li>{{message}}</li>
+                {% endfor %}
+            {% endif %}
+            </ul>
             <form action="/shows/create" method="post">
                 {% csrf_token %}
                 <lable>Title</lable>
